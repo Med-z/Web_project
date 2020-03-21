@@ -1,0 +1,22 @@
+site_site_homepage:
+    path:     /acc
+    defaults: { _controller: SiteSiteBundle:Default:index }
+
+site_site_sign_up:
+    path:     /inscription
+    defaults: { _controller: SiteSiteBundle:Users:inscription }
+
+
+site_site_sign_in:
+    path:     /connexion
+    defaults: { _controller: SiteSiteBundle:Users:connexion }
+
+site_site_menu:
+    path:     /menu/{id}
+    defaults: { _controller: SiteSiteBundle:Menu:accueil}
+
+
+site_site_shop:
+    path:     /menu/{id}/shop
+    defaults: { _controller: SiteSiteBundle:Product:index}
+

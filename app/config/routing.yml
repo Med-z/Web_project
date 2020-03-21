@@ -1,0 +1,7 @@
+site_site:
+    resource: "@SiteSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
