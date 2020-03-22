@@ -8,13 +8,17 @@
     </head>
     <body>
 
-    {%  block body %}
-        <h1>{%  block pagetitle %}{% endblock %}</h1>
-
+    <h1>{%  block pagetitle %}{% endblock %}</h1>
     {% block testid %}
 
     {% endblock %}
+    {%  block body %}
+
+
+
 
     {% endblock %}
+
+    <!-- <button>{% block button %} {% endblock %}</button> -->
     </body>
 </html>
