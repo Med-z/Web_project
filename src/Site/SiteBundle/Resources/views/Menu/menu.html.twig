@@ -11,11 +11,12 @@
             <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
         </div>
 
-    {% elseif id == 1 %}
-        Un client connecté
-        <a href="{{ path('site_site_menu', {'id': id}) }}">Menu du Site</a>
+    {% else  %}
+        <div>
+            Vous êtes bien connecté.
+            <a href="{{ path('site_site_shop', {'id': 1}) }}">Accès au magasin </a>
+        </div>
 
-    {% elseif id == 2 %}
-        administrateur
+    <!-- RAJOUTER CAS ADMIN, LIEN VERS PANIER, ET EDITER SON COMPTE -->
     {% endif %}
 {% endblock %}
