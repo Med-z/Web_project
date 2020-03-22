@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inscription</title>
-    </head>
-    <body>
+{% extends "@SiteSite/layout.html.twig" %}
+
+{% block title %}Inscription{% endblock %}
+
+{%  block pagetitle %} S'inscrire {% endblock %}
+{% block body %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <button type="submit" name="Envoyer" >Je m'inscris !</button>
     {{ form_end(form )}}
     <!-- form ici est la variable du formulaire dans le controller -->
 
-
-    </body>
-</html>
+{% endblock %}
