@@ -1,5 +1,5 @@
 site_site_homepage:
-    path:     /acc
+    path:     /
     defaults: { _controller: SiteSiteBundle:Default:index }
 
 site_site_sign_up:
@@ -18,5 +18,5 @@ site_site_menu:
 
 site_site_shop:
     path:     /menu/{id}/shop
-    defaults: { _controller: SiteSiteBundle:Product:index}
+    defaults: { _controller: SiteSiteBundle:Shop:index}
 
