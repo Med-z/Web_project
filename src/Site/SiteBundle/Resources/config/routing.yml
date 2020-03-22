@@ -20,3 +20,7 @@ site_site_shop:
     path:     /menu/{id}/shop
     defaults: { _controller: SiteSiteBundle:Shop:index}
 
+site_site_profil:
+    path:     /menu/{id}/profil
+    defaults: { _controller: SiteSiteBundle:Users:edit}
+
