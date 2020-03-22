@@ -18,11 +18,15 @@
                 <td>{{ product.price|e }}  €</td>
                 <td>{{ product.amount|e }}</td>
                 <td>
-                    <select>
-                        {% for stock in 0..product.amount %}
-                            <option>{{ stock }}</option>
-                        {% endfor %}
-                    </select>
+                    {% if product.amount == 0 %}
+                        <p>Produit non disponible.</p>
+                    {% else %}
+                        <select>
+                            {% for stock in 0..product.amount %}
+                                <option>{{ stock }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}
