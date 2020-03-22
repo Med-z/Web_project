@@ -1,0 +1,34 @@
+{% extends "@SiteSite/layout.html.twig" %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{%  block pagetitle %} Liste des produits de notre boutique {% endblock %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>Libellé</th>
+            <th>Prix</th>
+            <th>Stock</th>
+            <th>Choix</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.plabel|e }}</td>
+                <td>{{ product.price|e }}  €</td>
+                <td>{{ product.amount|e }}</td>
+                <td>
+                    <select>
+                        {% for stock in 0..product.amount %}
+                            <option>{{ stock }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+        {% endfor %}
+    </table> <!--
+    <button href="{{ path('site_site_homepage') }}"> Commander </button>
+    -->
+{% endblock %}
+
+
