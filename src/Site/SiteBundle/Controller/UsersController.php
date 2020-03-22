@@ -2,8 +2,8 @@
 
 namespace Site\SiteBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Site\SiteBundle\Entity\SignUp;
-use Site\SiteBundle\Form\SignUpType;
+use Site\SiteBundle\Entity\Users;
+use Site\SiteBundle\Form\UsersType;
 use Site\SiteBundle\Entity\SignIn;
 use Site\SiteBundle\Form\SignInType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,9 +17,9 @@ class UsersController extends Controller
     public function inscriptionAction(Request $request)
     {
 
-                $user = new SignUp();
+                $user = new Users();
                 //récuperation formulaire
-                $form = $this->createForm(SignUpType::class,$user);
+                $form = $this->createForm(UsersType::class,$user);
 
                 //récuperation de la requête
                 $form->handleRequest($request);
@@ -57,6 +57,23 @@ class UsersController extends Controller
                 return $this->render('@SiteSite/Users/inscription.html.twig', array(
                     'form' => $formView
                 ));
+    }
+
+    public function editAction(User $user, Request $request, ObjectManager $manager)
+    {
+        $form = $this->createForm(UsersType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            dump($form);
+            $manager = persist($user);
+            $manager->flush();
+        }
+
+        return $this->render('boom/edit.html.twig', [
+            'formUser' => $form->createView(),
+            'user' => $user->getId(),
+        ]);
     }
 
     public function connexionAction(Request $request)
@@ -109,11 +126,11 @@ class UsersController extends Controller
                 $password = $form["password"]->getData();
 
                 $log = $this->getDoctrine()
-                    ->getRepository('SiteSiteBundle:SignUp')
+                    ->getRepository('SiteSiteBundle:Users')
                     ->findOneBy(['login' => $login]);
 
                 $pwd = $this->getDoctrine()
-                    ->getRepository('SiteSiteBundle:SignUp')
+                    ->getRepository('SiteSiteBundle:Users')
                     ->findOneBy(['password' => $password]);
 
                 if(($log == $login) && ($pwd == $password)){
