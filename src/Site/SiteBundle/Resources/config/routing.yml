@@ -6,21 +6,25 @@ site_site_sign_up:
     path:     /inscription
     defaults: { _controller: SiteSiteBundle:Users:inscription }
 
-
 site_site_sign_in:
     path:     /connexion
     defaults: { _controller: SiteSiteBundle:Users:connexion }
+
+site_site_profil:
+    path:     /menu/{id}/profil
+    defaults: { _controller: SiteSiteBundle:Users:edit}
+
 
 site_site_menu:
     path:     /menu/{id}
     defaults: { _controller: SiteSiteBundle:Menu:accueil}
 
-
 site_site_shop:
     path:     /menu/{id}/shop
-    defaults: { _controller: SiteSiteBundle:Shop:index}
+    defaults: { _controller: SiteSiteBundle:Shop:commande}
 
-site_site_profil:
-    path:     /menu/{id}/profil
-    defaults: { _controller: SiteSiteBundle:Users:edit}
+site_site_panier:
+    path:     /menu/{id}/shop/panier
+    defaults: { _controller: SiteSiteBundle:Shop:panier}
+
 

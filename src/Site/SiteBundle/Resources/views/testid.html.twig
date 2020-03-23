@@ -1,0 +1,16 @@
+{% block testid %}
+    {% if id == 0 %}
+        <div>
+            Cette page ne vous est pas accessible, vous êtes anonyme.
+            <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
+        </div>
+
+    {% else  %}
+        <div>
+            Vous êtes bien connecté.
+            <a href="{{ path('site_site_shop', {'id': 1}) }}">Accès au magasin </a>
+        </div>
+
+        <!-- RAJOUTER CAS ADMIN, LIEN VERS PANIER, ET EDITER SON COMPTE -->
+    {% endif %}
+{% endblock %}

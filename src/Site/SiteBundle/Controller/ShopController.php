@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ShopController extends Controller
 {
-    public function indexAction(Request $request)
+    public function commandeAction(Request $request)
     {
         /*
         $db = new Product();
@@ -28,9 +28,25 @@ class ShopController extends Controller
         */
         $em = $this->getDoctrine()->getRepository('SiteSiteBundle:Product');
         $products = $em->findAll();
+
+        if($request->isMethod('post')){
+            $posts = $request->request->all();
+            $post = $request->request->get("product.id");
+                /*
+            return $this->render('@SiteSite/Shop/panier.html.twig',array(
+                'post' => $post
+            ));*/
+            return $this->redirectToRoute('site_site_panier',array('id' => 1));
+        }
+
         return $this->render('@SiteSite/Shop/listproduct.html.twig',array(
             'products' => $products
         ));
+    }
+
+    public function panierAction()
+    {
+            return $this->render('@SiteSite/Shop/panier.html.twig');
     }
 }
 

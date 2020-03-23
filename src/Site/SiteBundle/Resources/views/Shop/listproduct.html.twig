@@ -4,35 +4,39 @@
 
 {%  block pagetitle %} Liste des produits de notre boutique {% endblock %}
 
+
 {% block body %}
-    <table>
-        <tr>
-            <th>Libellé</th>
-            <th>Prix</th>
-            <th>Stock</th>
-            <th>Choix</th>
-        </tr>
-        {% for product in products %}
+    <form action="{{ path('site_site_shop', {'id': 1}) }}" method="post">
+        <table>
             <tr>
-                <td>{{ product.plabel|e }}</td>
-                <td>{{ product.price|e }}  €</td>
-                <td>{{ product.amount|e }}</td>
-                <td>
-                    {% if product.amount == 0 %}
-                        <p>Produit non disponible.</p>
-                    {% else %}
-                        <select>
-                            {% for stock in 0..product.amount %}
-                                <option>{{ stock }}</option>
-                            {% endfor %}
-                        </select>
-                    {% endif %}
-                </td>
+                <th>Libellé</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <th>Choix</th>
             </tr>
-        {% endfor %}
-    </table> <!--
-    <button href="{{ path('site_site_homepage') }}"> Commander </button>
-    -->
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.plabel|e }}</td>
+                    <td>{{ product.price|e }}  €</td>
+                    <td>{{ product.amount|e }}</td>
+                    <td>
+                        {% if product.amount == 0 %}
+                            <p>Produit non disponible.</p>
+                        {% else %}
+                            <select name="{{ product.id|e }}">
+                                {% for stock in 0..product.amount %}
+                                    <option value="{{ stock }}">{{ stock }}</option>
+                                {% endfor %}
+                            </select>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table> <!--
+        <button href="{{ path('site_site_homepage') }}"> Commander </button>
+        -->
+        <input type="submit" name="Envoyer" value="Commander ">
+    </form>
 {% endblock %}
 
 
