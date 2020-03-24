@@ -14,7 +14,6 @@ site_site_profil:
     path:     /menu/{id}/profil
     defaults: { _controller: SiteSiteBundle:Users:edit}
 
-
 site_site_menu:
     path:     /menu/{id}
     defaults: { _controller: SiteSiteBundle:Menu:accueil}

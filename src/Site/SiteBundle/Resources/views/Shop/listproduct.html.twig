@@ -3,40 +3,53 @@
 {% block title %}Liste des produits{% endblock %}
 
 {%  block pagetitle %} Liste des produits de notre boutique {% endblock %}
+{% block testid %}
+    {% if id == 0 %}
+        <div>
+            Cette page ne vous est pas accessible, vous êtes anonyme.
+            <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
+        </div>
 
-
-{% block body %}
-    <form action="{{ path('site_site_shop', {'id': 1}) }}" method="post">
-        <table>
-            <tr>
-                <th>Libellé</th>
-                <th>Prix</th>
-                <th>Stock</th>
-                <th>Choix</th>
-            </tr>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.plabel|e }}</td>
-                    <td>{{ product.price|e }}  €</td>
-                    <td>{{ product.amount|e }}</td>
-                    <td>
-                        {% if product.amount == 0 %}
-                            <p>Produit non disponible.</p>
-                        {% else %}
-                            <select name="{{ product.id|e }}">
-                                {% for stock in 0..product.amount %}
-                                    <option value="{{ stock }}">{{ stock }}</option>
-                                {% endfor %}
-                            </select>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table> <!--
+    {% else  %}
+        <div>
+            <form action="{{ path('site_site_shop', {'id': 1}) }}" method="post">
+                <table>
+                    <tr>
+                        <th>Libellé</th>
+                        <th>Prix</th>
+                        <th>Stock</th>
+                        <th>Choix</th>
+                    </tr>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.plabel|e }}</td>
+                            <td>{{ product.price|e }}  €</td>
+                            <td>{{ product.amount|e }}</td>
+                            <td>
+                                {% if product.amount == 0 %}
+                                    <p>Produit non disponible.</p>
+                                {% else %}
+                                    <select name="{{ product.id|e }}">
+                                        {% for stock in 0..product.amount %}
+                                            <option value="{{ stock }}">{{ stock }}</option>
+                                        {% endfor %}
+                                    </select>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table> <!--
         <button href="{{ path('site_site_homepage') }}"> Commander </button>
         -->
-        <input type="submit" name="Envoyer" value="Commander ">
-    </form>
+                <input type="submit" name="Envoyer" value="Commander ">
+            </form>
+        </div>
+
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+
 {% endblock %}
 
 

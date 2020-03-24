@@ -69,12 +69,12 @@ class UsersController extends Controller
             $manager = persist($user);
             $manager->flush();
         }
-
         return $this->render('boom/edit.html.twig', [
             'formUser' => $form->createView(),
             'user' => $user->getId(),
         ]);
     }
+
 
     public function connexionAction(Request $request)
     {/*
