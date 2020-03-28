@@ -10,20 +10,24 @@ site_site_sign_in:
     path:     /connexion
     defaults: { _controller: SiteSiteBundle:Users:connexion }
 
+site_site_disconnect:
+    path:     /deconnexion
+    defaults: { _controller: SiteSiteBundle:Users:deconnexion }
+
 site_site_profil:
-    path:     /menu/{id}/profil
+    path:     /menu/profil/{num}
     defaults: { _controller: SiteSiteBundle:Users:edit}
 
 site_site_menu:
-    path:     /menu/{id}
+    path:     /menu/
     defaults: { _controller: SiteSiteBundle:Menu:accueil}
 
 site_site_shop:
-    path:     /menu/{id}/shop
+    path:     /menu/shop
     defaults: { _controller: SiteSiteBundle:Shop:commande}
 
 site_site_panier:
-    path:     /menu/{id}/shop/panier
+    path:     /menu/shop/panier
     defaults: { _controller: SiteSiteBundle:Shop:panier}
 
 

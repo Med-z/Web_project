@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ShopController extends Controller
 {
-    public function commandeAction(Request $request, $id)
+    public function commandeAction(Request $request)
     {
         /*
         $db = new Product();
@@ -36,20 +36,17 @@ class ShopController extends Controller
             return $this->render('@SiteSite/Shop/panier.html.twig',array(
                 'post' => $post
             ));*/
-            return $this->redirectToRoute('site_site_panier',array('id' => 1));
+            return $this->redirectToRoute('site_site_panier');
         }
 
         return $this->render('@SiteSite/Shop/listproduct.html.twig',array(
-            'products' => $products,
-            'id' => $id
+            'products' => $products
         ));
     }
 
-    public function panierAction($id)
+    public function panierAction()
     {
-            return $this->render('@SiteSite/Shop/panier.html.twig', array(
-                'id' => $id
-            ));
+            return $this->render('@SiteSite/Shop/panier.html.twig');
     }
 }
 

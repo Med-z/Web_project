@@ -59,20 +59,23 @@ class UsersController extends Controller
                 ));
     }
 
-    public function editAction(User $user, Request $request, ObjectManager $manager)
+    public function editAction(Users $user, Request $request/*, ObjectManager $manager*/)
     {
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            dump($form);
-            $manager = persist($user);
-            $manager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {/*
+                    dump($form);
+                    $manager = persist($user);
+                    $manager->flush();*/
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
         }
-        return $this->render('boom/edit.html.twig', [
-            'formUser' => $form->createView(),
+        return $this->render('@SiteSite/Users/editprofil.html.twig', array(
+            'form' => $form->createView(),
             'user' => $user->getId(),
-        ]);
+        ));
     }
 
 
@@ -148,5 +151,10 @@ class UsersController extends Controller
             'form' => $formView
         ));*/
         return $this->render('@SiteSite/Users/connexion.html.twig');
+    }
+
+    public function deconnexionAction(Request $request)
+    {
+        return $this->render('@SiteSite/Users/deconnexion.html.twig');
     }
 }

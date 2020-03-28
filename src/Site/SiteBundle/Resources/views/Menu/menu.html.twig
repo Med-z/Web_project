@@ -5,7 +5,7 @@
 {% block pagetitle %}Bienvenue{% endblock %}
 
 {% block testid %}
-    {% if id == 0 %}
+    {% if identifiant == 0 %}
         <div>
             Cette page ne vous est pas accessible, vous êtes anonyme.
             <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
@@ -14,7 +14,14 @@
     {% else  %}
         <div>
             Vous êtes bien connecté.
-            <a href="{{ path('site_site_shop', {'id': 1}) }}">Accès au magasin </a>
+        </div>
+        <div>
+            <ul>
+                <li><a href="{{ path('site_site_shop') }}">Accès au magasin </a></li>
+                <li><a href="{{ path('site_site_disconnect')}}">Se deconnecter </a></li>
+                <li><a href="{{ path('site_site_panier') }}">Accès à votre panier </a></li>
+                <li><a href="{{ path('site_site_profil', {'num':2}) }}">Accès à votre profil </a></li>
+            </ul>
         </div>
 
     <!-- RAJOUTER CAS ADMIN, LIEN VERS PANIER, ET EDITER SON COMPTE -->
