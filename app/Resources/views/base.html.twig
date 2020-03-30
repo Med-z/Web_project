@@ -12,6 +12,15 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <header>
+            {% block header %}{% endblock %}            
+        </header>
+        <nav>
+        {% block menu %}{% endblock %}
+        </nav>
         {% block body %}{% endblock %}
+        <footer>
+            <img src="{{ asset('img/footer.jpg') }}" alt="bandeau de bas de page" />
+        </footer>
     </body>
 </html>
