@@ -7,7 +7,7 @@
 {% block title %}Administration{% endblock %}
 
 {% block pagetitle %}Liste des utilisateurs du site{% endblock %}
-
+{% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
 {% block testid %}
     {% if identifiant == 2 %}
         <table>
