@@ -1,5 +1,9 @@
 {% extends "@SiteSite/layout.html.twig" %}
 
+{% block othersheets %}
+    <link rel="stylesheet" href="{{ asset('css/administration.css') }}"/>
+{% endblock %}
+
 {% block title %}Administration{% endblock %}
 
 {% block pagetitle %}Liste des utilisateurs du site{% endblock %}
