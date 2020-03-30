@@ -31,3 +31,8 @@ site_site_panier:
     defaults: { _controller: SiteSiteBundle:Shop:panier}
 
 
+site_site_admin:
+    path:     /administration
+    defaults: { _controller: SiteSiteBundle:Admin:editUsers}
+
+

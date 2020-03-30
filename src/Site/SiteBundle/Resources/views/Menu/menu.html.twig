@@ -5,13 +5,7 @@
 {% block pagetitle %}Bienvenue{% endblock %}
 
 {% block testid %}
-    {% if identifiant == 0 %}
-        <div>
-            Cette page ne vous est pas accessible, vous êtes anonyme.
-            <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
-        </div>
-
-    {% else  %}
+    {% if identifiant == 1 %}
         <div>
             Vous êtes bien connecté.
         </div>
@@ -23,6 +17,22 @@
                 <li><a href="{{ path('site_site_profil', {'num':2}) }}">Accès à votre profil </a></li>
             </ul>
         </div>
+    {% elseif identifiant == 2  %}
+        <div>
+            Vous êtes bien en mode administrateur.
+        </div>
+        <div>
+            <ul>
+                <li><a href="{{ path('site_site_admin') }}">Accès à la liste des utilisateurs </a></li>
+
+            </ul>
+        </div>
+    {% else  %}
+        <div>
+            Cette page ne vous est pas accessible, vous êtes anonyme.
+            <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
+        </div>
+
 
     <!-- RAJOUTER CAS ADMIN, LIEN VERS PANIER, ET EDITER SON COMPTE -->
     {% endif %}

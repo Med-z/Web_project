@@ -3,14 +3,9 @@
 {% block title %}Liste des produits{% endblock %}
 
 {%  block pagetitle %} Liste des produits de notre boutique {% endblock %}
-{% block testid %}
-    {% if identifiant == 0 %}
-        <div>
-            Cette page ne vous est pas accessible, vous êtes anonyme.
-            <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
-        </div>
 
-    {% else  %}
+{% block testid %}
+    {% if identifiant == 1 %}
         <div>
             <form action="{{ path('site_site_shop', {'id': 1}) }}" method="post">
                 <table>
@@ -29,7 +24,8 @@
                                 {% if product.amount == 0 %}
                                     <p>Produit non disponible.</p>
                                 {% else %}
-                                    <select name="{{ product.id|e }}">
+                                    <!--<select name="{{ product.id|e }}">-->
+                                    <select name="test">
                                         {% for stock in 0..product.amount %}
                                             <option value="{{ stock }}">{{ stock }}</option>
                                         {% endfor %}
@@ -44,12 +40,20 @@
                 <input type="submit" name="Envoyer" value="Commander ">
             </form>
         </div>
-
+    {% else  %}
+        <div>
+            Cette page ne vous est pas accessible, vous êtes anonyme.
+            <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
+        </div>
     {% endif %}
+
+
 {% endblock %}
 
-{% block body %}
 
+
+{% block body %}
+    <a href="{{ path('site_site_menu') }}">Menu du Site</a>
 {% endblock %}
 
 

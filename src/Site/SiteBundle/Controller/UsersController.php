@@ -1,6 +1,8 @@
 <?php
 
 namespace Site\SiteBundle\Controller;
+use Site\SiteBundle\Entity\Im1920Utilisateurs;
+use Site\SiteBundle\Form\Im1920UtilisateursType;
 use Symfony\Component\HttpFoundation\Request;
 use Site\SiteBundle\Entity\Users;
 use Site\SiteBundle\Form\UsersType;
@@ -17,9 +19,10 @@ class UsersController extends Controller
     public function inscriptionAction(Request $request)
     {
 
-                $user = new Users();
+                //$user = new Users();
+                $user = new Im1920Utilisateurs();
                 //récuperation formulaire
-                $form = $this->createForm(UsersType::class,$user);
+                $form = $this->createForm(Im1920UtilisateursType::class,$user);
 
                 //récuperation de la requête
                 $form->handleRequest($request);
@@ -29,19 +32,10 @@ class UsersController extends Controller
                     //on enregistre le nouvel utilisateur dans la base de données
 
                     $em = $this->getDoctrine()->getManager();
+                    
                     $em->persist($user);
                     $em->flush();
 
-                    //return new Response('Utilisateur  inscrit');
-                    //return $this->render('@SiteSite/Users/inscription.html.twig');
-                    /*return $this->redirectToRoute('site_site_homepage',array(
-                        'id' => 1
-                    ));*/
-                   /* $tmp = 1;
-                    return $this->redirectToRoute('site_site_homepage',array(
-                        'id' => $tmp
-                    ));*/
-                    //return $this->redirectToRoute('site_site_homepage', ['id' => 1]);
                     $global = $this->get("twig")->getGlobals();
                     $global["identifiant"]= 1;
 

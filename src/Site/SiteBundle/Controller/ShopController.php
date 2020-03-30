@@ -29,14 +29,16 @@ class ShopController extends Controller
         $em = $this->getDoctrine()->getRepository('SiteSiteBundle:Product');
         $products = $em->findAll();
 
-        if($request->isMethod('post')){
+        if($request->getMethod() == 'POST'){
             $posts = $request->request->all();
             $post = $request->request->get("product.id");
-                /*
+
             return $this->render('@SiteSite/Shop/panier.html.twig',array(
-                'post' => $post
-            ));*/
-            return $this->redirectToRoute('site_site_panier');
+                'post' => $_POST
+            ));
+
+           // return $this->redirectToRoute('site_site_panier');
+
         }
 
         return $this->render('@SiteSite/Shop/listproduct.html.twig',array(
@@ -46,7 +48,9 @@ class ShopController extends Controller
 
     public function panierAction()
     {
-            return $this->render('@SiteSite/Shop/panier.html.twig');
+            return $this->render('@SiteSite/Shop/panier.html.twig',array(
+                'post' => []
+            ));
     }
 }
 
