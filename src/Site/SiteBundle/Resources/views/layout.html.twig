@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        {% block head %}
-        <link rel="stylesheet" href="style.css" />
-        <title>{% block title %}{% endblock %}</title>
-        {% endblock %}
-    </head>
-    <body>
-
-    <h1>{%  block pagetitle %}{% endblock %}</h1>
+{% extends 'base.html.twig' %}
+{% block title %}Site{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}"/>
+    {% block othersheets %}
+    {% endblock %}
+{% endblock %}
+{% block menu %}
+{% include '@SiteSite/Menu/menu.html.twig' %}
+{% endblock %}
+{% block body %}
+<h1>{%  block pagetitle %}{% endblock %}</h1>
     {% block testid %}
 
     {% endblock %}
-    {%  block body %}
-
-
-
-
-    {% endblock %}
-
-    <!-- <button>{% block button %} {% endblock %}</button> -->
-    </body>
-</html>
+{% endblock %}

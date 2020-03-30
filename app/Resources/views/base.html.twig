@@ -3,11 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <!-- feuille de style utilisée à travers tout le site -->
+        <!-- on a choisi de mettre le css dans le dossier web/css de part les conseils de bonne 
+        pratiques de sympfony https://symfony.com/doc/3.3/best_practices/web-assets.html -->
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+        <!-- autre feuille de style -->
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <nav>
+        {% block menu %}{% endblock %}
+        </nav>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
     </body>
 </html>
