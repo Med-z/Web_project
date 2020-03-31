@@ -3,11 +3,16 @@
 {% block title %}Liste des produits{% endblock %}
 
 {%  block pagetitle %} Liste des produits de notre boutique {% endblock %}
-{% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
+
+{% block body %}
+    {% embed "@SiteSite/Menu/menu.html.twig" %}{% endembed %}
+{% endblock %}
+
+
 {% block testid %}
     {% if identifiant == 1 %}
         <div>
-            <form action="{{ path('site_site_shop', {'id': 1}) }}" method="post">
+            <form action="{{ path('site_site_shop') }}" method="post">
                 <table>
                     <tr>
                         <th>Libellé</th>
@@ -24,8 +29,7 @@
                                 {% if product.amount == 0 %}
                                     <p>Produit non disponible.</p>
                                 {% else %}
-                                    <!--<select name="{{ product.id|e }}">-->
-                                    <select name="test">
+                                    <select name="{{ product.id|e }}">
                                         {% for stock in 0..product.amount %}
                                             <option value="{{ stock }}">{{ stock }}</option>
                                         {% endfor %}
@@ -52,8 +56,6 @@
 
 
 
-{% block body %}
-    <a href="{{ path('site_site_menu') }}">Menu du Site</a>
-{% endblock %}
+
 
 

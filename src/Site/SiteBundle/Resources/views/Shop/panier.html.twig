@@ -3,7 +3,7 @@
 {% block title %}Panier{% endblock %}
 
 {%  block pagetitle %} Votre panier {% endblock %}
-{% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
+
 {% block testid %}
     {% if identifiant == 1 %}
         <div>
@@ -24,6 +24,6 @@
     {% endfor %}
 
 
+        {% embed "@SiteSite/Menu/menu.html.twig" %}{% endembed %}
 
-    <a href="{{ path('site_site_menu') }}">Menu du Site</a>
 {% endblock %}

@@ -13,7 +13,7 @@
         </h1>
     </div>
     <div>
-        Vous êtes {% if id == 0 %}
+        Vous êtes {% if identifiant == 0 %}
             un utilisateur anonyme
         <div>
 
@@ -22,11 +22,11 @@
 
         </div>
 
-        {% elseif id == 1 %}
+        {% elseif identifiant == 1 %}
             un client connecté
             <a href="{{ path('site_site_menu') }}">Menu du Site</a>
 
-        {% elseif id == 2 %}
+        {% elseif identifiant == 2 %}
             administrateur
             <a href="{{ path('site_site_menu') }}">Menu du Site</a>
         {% endif %}

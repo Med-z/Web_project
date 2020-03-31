@@ -1,13 +1,9 @@
 {% extends "@SiteSite/layout.html.twig" %}
 
-{% block othersheets %}
-    <link rel="stylesheet" href="{{ asset('css/administration.css') }}"/>
-{% endblock %}
-
 {% block title %}Administration{% endblock %}
 
 {% block pagetitle %}Liste des utilisateurs du site{% endblock %}
-{% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
+
 {% block testid %}
     {% if identifiant == 2 %}
         <table>
@@ -17,19 +13,26 @@
                 <th>Login</th>
                 <th>Mot de passe</th>
                 <th>Date de naissance</th>
+                <th>Est admin</th>
+                <th>Crée le </th>
+                <th>Modifié le</th>
             </tr>
             {% for user in users %}
                 <tr>
-                    <td>{{ user.name|e }}</td>
-                    <td>{{ user.firstname|e }}</td>
-                    <td>{{ user.login|e }}</td>
-                    <td>{{ user.password|e }}</td>
-                    <td>{{ user.birthdate|date('D-m-y') }}</td>
+                    <td>{{ user.nom|e }}</td>
+                    <td>{{ user.prenom|e }}</td>
+                    <td>{{ user.identifiant|e }}</td>
+                    <td>{{ user.motdepasse|e }}</td>
+                    <td>{{ user.anniversaire|date('D-m-y') }}</td>
+                    <td>{{ user.isadmin }} </td>
+                    <td>{{ user.created|date('D-m-y') }}</td>
+                    <td>{{ user.modified|date('D-m-y') }}</td>
 
 
                 </tr>
             {% endfor %}
         </table>
+        
     {% else  %}
         <div>
             Cette page ne vous est pas accessible, vous êtes anonyme.
@@ -40,5 +43,5 @@
 
 
 {% block body %}
-    <a href="{{ path('site_site_menu') }}">Menu du Site</a>
+
 {% endblock %}

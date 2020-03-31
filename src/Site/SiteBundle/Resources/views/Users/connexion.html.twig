@@ -3,6 +3,7 @@
 {% extends "@SiteSite/layout.html.twig" %}
 
 {% block title %}Connexion{% endblock %}
-{% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
+
 {% block body %}    Vous êtes ici sur la page de connexion.
+        {% embed "@SiteSite/Menu/menu.html.twig" %}{% endembed %}
 {% endblock %}

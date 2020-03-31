@@ -32,7 +32,7 @@ class UsersController extends Controller
                     //on enregistre le nouvel utilisateur dans la base de données
 
                     $em = $this->getDoctrine()->getManager();
-                    
+
                     $em->persist($user);
                     $em->flush();
 

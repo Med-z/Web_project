@@ -1,32 +1,35 @@
-<p>Menu</p>
-{% if identifiant == 1 %}
-    <div>
-        Vous êtes bien connecté.
-    </div>
-    <div>
-        <ul>
-            <li><a href="{{ path('site_site_shop') }}">Accès au magasin </a></li>
-            <li><a href="{{ path('site_site_disconnect')}}">Se deconnecter </a></li>
-            <li><a href="{{ path('site_site_panier') }}">Accès à votre panier </a></li>
-            <li><a href="{{ path('site_site_profil', {'num':2}) }}">Accès à votre profil </a></li>
-        </ul>
-    </div>
-{% elseif identifiant == 2  %}
-    <div>
-        Vous êtes bien en mode administrateur.
-    </div>
-    <div>
-        <ul>
-            <li><a href="{{ path('site_site_admin') }}">Accès à la liste des utilisateurs </a></li>
+{% extends "@SiteSite/layout.html.twig" %}
 
-        </ul>
-    </div>
-{% else  %}
-    <div>
-        Cette page ne vous est pas accessible, vous êtes anonyme.
-        <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
-    </div>
+{% block testid %}
+    {% if identifiant == 1 %}
+        <div>
+            Vous êtes bien connecté.
+        </div>
+        <div>
+            <ul>
+                <li><a href="{{ path('site_site_shop') }}">Accès au magasin </a></li>
+                <li><a href="{{ path('site_site_disconnect')}}">Se deconnecter </a></li>
+                <li><a href="{{ path('site_site_panier') }}">Accès à votre panier </a></li>
+                <li><a href="{{ path('site_site_profil', {'num':1}) }}">Accès à votre profil </a></li>
+            </ul>
+        </div>
+    {% elseif identifiant == 2  %}
+        <div>
+            Vous êtes bien en mode administrateur.
+        </div>
+        <div>
+            <ul>
+                <li><a href="{{ path('site_site_admin') }}">Accès à la liste des utilisateurs </a></li>
+
+            </ul>
+        </div>
+    {% else  %}
+        <div>
+            Cette page ne vous est pas accessible, vous êtes anonyme.
+            <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
+        </div>
 
 
-<!-- RAJOUTER CAS ADMIN, LIEN VERS PANIER, ET EDITER SON COMPTE -->
-{% endif %}
+    <!-- RAJOUTER CAS ADMIN, LIEN VERS PANIER, ET EDITER SON COMPTE -->
+    {% endif %}
+{% endblock %}
