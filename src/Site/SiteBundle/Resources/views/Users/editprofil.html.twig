@@ -1,6 +1,9 @@
 {% extends "@SiteSite/layout.html.twig" %}
-
+{% block othersheets %}
+    <link rel="stylesheet" href="{{ asset('css/editprofil.css') }}"/>
+{% endblock %}
 {% block title %}Profil{% endblock %}
+
 {% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
 {%  block pagetitle %} Editer son profil {% endblock %}
 {% block body %}

@@ -1,5 +1,7 @@
 {% extends "@SiteSite/layout.html.twig" %}
-
+{% block othersheets %}
+    <link rel="stylesheet" href="{{ asset('css/deconnexion.css') }}"/>
+{% endblock %}
 {% block title %}Deconnexion{% endblock %}
 {% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
 {% block body %}    Vous êtes ici sur la page de deconnexion.

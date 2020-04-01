@@ -2,6 +2,10 @@
 
 {% extends "@SiteSite/layout.html.twig" %}
 
+
+{% block othersheets %}
+    <link rel="stylesheet" href="{{ asset('css/connexion.css') }}"/>
+{% endblock %}
 {% block title %}Connexion{% endblock %}
 {% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
 {% block body %}    Vous êtes ici sur la page de connexion.
