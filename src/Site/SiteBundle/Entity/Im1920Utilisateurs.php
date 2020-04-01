@@ -77,7 +77,11 @@ class Im1920Utilisateurs
      */
     private $modified;
 
-
+    public function __construct()
+    {
+        $this->created = new \DateTime('now');
+        $this->modified = new \DateTime('now');
+    }
 
     /**
      * Get id
