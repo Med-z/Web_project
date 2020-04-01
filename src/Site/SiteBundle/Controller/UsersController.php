@@ -51,22 +51,27 @@ class UsersController extends Controller
                 ));
     }
 
-    public function editAction(Users $user, Request $request/*, ObjectManager $manager*/)
+    public function editAction(Request $request, $num)
     {
-        $form = $this->createForm(UsersType::class, $user);
+       // le profil à editer doit être passer dans l'url
+        $em = $this->getDoctrine()->getManager()->getRepository('SiteSiteBundle:Im1920Utilisateurs');
+        $user = $em->findById($num);
+        if (!$user){
+            throw $this->createNotFoundException('No user with the id selected');
+        }
+
+        $form = $this->createForm( Im1920UtilisateursType::class, $user[0]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-                    dump($form);
-                    $manager = persist($user);
-                    $manager->flush();/*
+        if($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();*/
+            $em->flush();
+            //$this->addFlash('success', 'successfully changed the data');
+            return new Response('admin_core_data');
         }
+
         return $this->render('@SiteSite/Users/editprofil.html.twig', array(
-            'form' => $form->createView(),
-            'user' => $user->getId(),
+            'form' => $form->createView()
         ));
     }
 
