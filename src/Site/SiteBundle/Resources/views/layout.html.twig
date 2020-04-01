@@ -5,6 +5,16 @@
     {% block othersheets %}
     {% endblock %}
 {% endblock %}
+{% block header %}
+    {% if identifiant == 1 %}
+        {% set srcTop = 'top_auth.jpg' %}
+    {% elseif identifiant == 2%}
+        {% set srcTop = 'top_admin.jpg' %}
+    {% else %}
+        {% set srcTop = 'top.jpg' %}
+    {% endif %}
+    <img src="{{ srcTop }}" alt="image de haut de page"/>
+{% endblock %}  
 {% block body %}
 <h1>{%  block pagetitle %}{% endblock %}</h1>
     {% block testid %}
