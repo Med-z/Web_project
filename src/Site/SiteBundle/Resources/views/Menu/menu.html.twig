@@ -5,6 +5,7 @@
     </div>
     <div>
         <ul>
+            <li><a href="{{ path('site_site_homepage') }}">Accueil</a></li>
             <li><a href="{{ path('site_site_shop') }}">Accès au magasin </a></li>
             <li><a href="{{ path('site_site_disconnect')}}">Se deconnecter </a></li>
             <li><a href="{{ path('site_site_panier') }}">Accès à votre panier </a></li>
@@ -23,8 +24,15 @@
     </div>
 {% else  %}
     <div>
-        Cette page ne vous est pas accessible, vous êtes anonyme.
-        <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
+        <p>Vous n'êtes pas connecté</p>
+        <ul>
+            <li>
+                <a href="{{ path('site_site_sign_in') }}">Connexion</a>
+            </li>
+            <li>
+                <a href="{{ path('site_site_sign_up') }}">Inscription</a>
+            </li>
+        </ul>
     </div>
 
 
