@@ -18,7 +18,6 @@ class UsersController extends Controller
 {
     public function inscriptionAction(Request $request)
     {
-
                 //$user = new Users();
                 $user = new Im1920Utilisateurs();
                 //récuperation formulaire
@@ -32,16 +31,15 @@ class UsersController extends Controller
                     //on enregistre le nouvel utilisateur dans la base de données
 
                     $em = $this->getDoctrine()->getManager();
-                    
+                    // encodage du mot de passe en sha1
+                    $user->setMotdepasse((sha1($user->getMotdepasse())));
+                    /*
+                    $user->setCreated('H:i:s \O\n d/m/Y');
+                    $user->setModified($user->getCreated());*/
                     $em->persist($user);
                     $em->flush();
 
-                    $global = $this->get("twig")->getGlobals();
-                    $global["identifiant"]= 1;
-
-                    return $this->render('@SiteSite/Menu/menu.html.twig', array(
-                        'id' =>  $global["identifiant"]
-                    ));
+                    return $this->render('@SiteSite/Menu/menu.html.twig');
 
                 }
 
@@ -58,13 +56,13 @@ class UsersController extends Controller
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {/*
+        if ($form->isSubmitted() && $form->isValid()) {
                     dump($form);
                     $manager = persist($user);
-                    $manager->flush();*/
+                    $manager->flush();/*
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
-            $em->flush();
+            $em->flush();*/
         }
         return $this->render('@SiteSite/Users/editprofil.html.twig', array(
             'form' => $form->createView(),
