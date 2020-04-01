@@ -28,13 +28,7 @@ class Im1920UtilisateursType extends AbstractType
             ))
             ->add('isadmin', CheckboxType::class,array(
                 'required' => false
-            ))
-            ->add('created',DateType::class, array(
-                'years' => range(2020, 2010)
-            ))
-            ->add('modified',DateType::class, array(
-                'years' => range(2020, 2010)
-            ));
+            )); 
     }/**
      * {@inheritdoc}
      */
