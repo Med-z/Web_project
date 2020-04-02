@@ -25,7 +25,7 @@
                                     <p>Produit non disponible.</p>
                                 {% else %}
                                     <!--<select name="{{ product.id|e }}">-->
-                                    <select name="test">
+                                    <select name="{{product.id}}">
                                         {% for stock in 0..product.amount %}
                                             <option value="{{ stock }}">{{ stock }}</option>
                                         {% endfor %}

@@ -30,6 +30,14 @@ site_site_panier:
     path:     /menu/shop/panier
     defaults: { _controller: SiteSiteBundle:Shop:panier}
 
+site_site_panier_del:
+    path:     /menu/shop/panier/delete
+    defaults: { _controller: SiteSiteBundle:Shop:delete}
+
+site_site_panier_order:
+    path:     /menu/shop/panier/order
+    defaults: { _controller: SiteSiteBundle:Shop:order}
+
 site_site_admin:
     path:     /administration
     defaults: { _controller: SiteSiteBundle:Admin:editUsers}

@@ -7,7 +7,30 @@
 {% block testid %}
     {% if identifiant == 1 %}
         <div>
-
+                <table>
+                    <tr>
+                        <th>Libellé</th>
+                        <th>Prix unitaire</th>
+                        <th>Quantité</th>
+                        <th>PRix total</th>
+                        <th>Suprimé</th>
+                    </tr>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product[0].plabel|e }}</td>
+                            <td>{{ product[0].price|e }}  €</td>
+                            <td>{{ product[1]}}</td>
+                            <td>{{ product[2]}}</td>
+                            <td><a href="{{ path('site_site_panier_del') }}">X</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+          
+            <div>
+               <button><a href="{{ path('site_site_panier_order') }}">Commander</a></button>
+               <button><a href="{{ path('site_site_panier_del') }}">Vider</a></button>
+               <p>total : {{ total }}</p>
+            </div>
         </div>
     {% else  %}
         <div>
@@ -17,13 +40,4 @@
     {% endif %}
 
 
-{% endblock %}
-{% block body %}
-    {% for i in post %}
-        <p>{{ i|e }}</p>
-    {% endfor %}
-
-
-
-    <a href="{{ path('site_site_menu') }}">Menu du Site</a>
 {% endblock %}
