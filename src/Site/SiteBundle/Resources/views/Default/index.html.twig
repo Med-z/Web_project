@@ -4,16 +4,15 @@
 
 {% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
         {% block testid %}
-        
-        Vous êtes {% if id == 0 %}
+
+            Vous êtes {% if identifiant == 0 %}
             un utilisateur anonyme
-            
-        {% elseif id == 1 %}
+
+        {% elseif identifiant == 1 %}
             un client connecté
 
-        {% elseif id == 2 %}
+        {% elseif identifiant == 2 %}
             administrateur
         {% endif %}
-        
-        {% endblock %}
 
+        {% endblock %}
