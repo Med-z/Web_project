@@ -65,9 +65,12 @@ class UsersController extends Controller
 
         if($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
+            // encodage du mot de passe
+            $user[0]->setMotdepasse((sha1($user[0]->getMotdepasse())));
+            // modification de la  date
+            $user[0]->setModified(new \DateTime('now'));
             $em->flush();
-            //$this->addFlash('success', 'successfully changed the data');
-            return new Response('admin_core_data');
+            return $this->redirectToRoute('site_site_menu');
         }
 
         return $this->render('@SiteSite/Users/editprofil.html.twig', array(
