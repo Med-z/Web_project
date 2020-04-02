@@ -36,7 +36,8 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     globals:
-        identifiant: 0                 #ici variable globale de l'identifiant, id = 0 -> ano, id = 1 -> client, id = 2 -> admin
+        identifiant: 1                 #ici variable globale de l'identifiant, id = 0 -> ano, id = 1 -> client, id = 2 -> admin
+        connect: 5                 #ici variable globale de l'utilisateur connecté, doit correspondre à un id de la bdd (UTILE UNIQUEMENT SI identifiant = 1)
 
 # Doctrine Configuration
 doctrine:
