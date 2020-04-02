@@ -1,6 +1,7 @@
 <?php
 
 namespace Site\SiteBundle\Controller;
+use Site\SiteBundle\Service\SecondInDayCounter;
 use Site\SiteBundle\Entity\Im1920Utilisateurs;
 use Site\SiteBundle\Form\Im1920UtilisateursType;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,7 +84,7 @@ class UsersController extends Controller
     }
 
 
-    public function connexionAction(Request $request)
+    public function connexionAction()
     {/*
         $user = new SignIn();
         //récuperation formulaire
@@ -154,7 +155,9 @@ class UsersController extends Controller
         return $this->render('@SiteSite/Users/connexion.html.twig', array(
             'form' => $formView
         ));*/
-        return $this->render('@SiteSite/Users/connexion.html.twig');
+        $secCounter = new SecondInDayCounter ();
+        $arg = array('secondInDay' => $secCounter->getsecond());
+        return $this->render('@SiteSite/Users/connexion.html.twig',$arg);
     }
 
     public function deconnexionAction(Request $request)
