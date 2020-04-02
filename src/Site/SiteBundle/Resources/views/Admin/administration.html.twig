@@ -19,11 +19,11 @@
             </tr>
             {% for user in users %}
                 <tr>
-                    <td>{{ user.name|e }}</td>
-                    <td>{{ user.firstname|e }}</td>
-                    <td>{{ user.login|e }}</td>
-                    <td>{{ user.password|e }}</td>
-                    <td>{{ user.birthdate|date('D-m-y') }}</td>
+                    <td>{{ user.nom|e }}</td>
+                    <td>{{ user.prenom|e }}</td>
+                    <td>{{ user.identifiant|e }}</td>
+                    <td>{{ user.motdepasse|e }}</td>
+                    <td>{{ user.anniversaire|date('D-m-y') }}</td>
 
 
                 </tr>
