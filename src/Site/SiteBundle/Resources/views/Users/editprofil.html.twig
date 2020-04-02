@@ -1,3 +1,4 @@
+
 {% extends "@SiteSite/layout.html.twig" %}
 {% block othersheets %}
     <link rel="stylesheet" href="{{ asset('css/editprofil.css') }}"/>
@@ -12,5 +13,7 @@
     <button type="submit" name="Envoyer" >Je modifie !</button>
     {{ form_end(form )}}
     <!-- form ici est la variable du formulaire dans le controller -->
+
+        {% embed "@SiteSite/Menu/menu.html.twig" %}{% endembed %}
 
 {% endblock %}
