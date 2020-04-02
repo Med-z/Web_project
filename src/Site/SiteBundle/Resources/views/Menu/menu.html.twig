@@ -1,12 +1,11 @@
-{% extends "@SiteSite/layout.html.twig" %}
 
-{% block testid %}
     {% if identifiant == 1 %}
         <div>
             Vous êtes bien connecté.
         </div>
         <div>
             <ul>
+                <li><a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a></li>
                 <li><a href="{{ path('site_site_shop') }}">Accès au magasin </a></li>
                 <li><a href="{{ path('site_site_disconnect')}}">Se deconnecter </a></li>
                 <li><a href="{{ path('site_site_panier') }}">Accès à votre panier </a></li>
@@ -20,16 +19,19 @@
         <div>
             <ul>
                 <li><a href="{{ path('site_site_admin') }}">Accès à la liste des utilisateurs </a></li>
+                <li><a href="{{ path('site_site_disconnect')}}">Se deconnecter </a></li>
                 <li><a href="https://fr.wikipedia.org/wiki/Amour_et_Amnésie">lien vers amour et amnésie </a></li>
             </ul>
         </div>
     {% else  %}
         <div>
-            Cette page ne vous est pas accessible, vous êtes anonyme.
-            <a href="{{ path('site_site_homepage') }}">Redirection sur l'accueil</a>
+            Vous êtes anonyme.
+            <ul>
+             <li><a href="{{ path('site_site_sign_up') }}">S'inscrire</a></li>
+             <li><a href="{{ path('site_site_sign_in') }}">Se connecter</a></li>
+            </ul>
         </div>
 
 
     <!-- RAJOUTER CAS ADMIN, LIEN VERS PANIER, ET EDITER SON COMPTE -->
     {% endif %}
-{% endblock %}

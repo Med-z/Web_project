@@ -1,39 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
-</head>
-<body>
-<fieldset>
-    <div>
-        <h1>
-            Bienvenue
-        </h1>
-    </div>
-    <div>
+{% extends "@SiteSite/layout.html.twig" %}
+{% block title %}Acceuil{% endblock %}
+{%  block pagetitle %} Bienvenue, {% endblock %}
+
+{% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
+        {% block testid %}
+        
         Vous êtes {% if id == 0 %}
             un utilisateur anonyme
-        <div>
-
-            <a href="{{ path('site_site_sign_up') }}">S'inscrire</a>
-            <a href="{{ path('site_site_sign_in') }}">Se connecter</a>
-
-        </div>
-
+            
         {% elseif id == 1 %}
             un client connecté
-            <a href="{{ path('site_site_menu') }}">Menu du Site</a>
 
         {% elseif id == 2 %}
             administrateur
-            <a href="{{ path('site_site_menu') }}">Menu du Site</a>
         {% endif %}
-    </div>
-
-</fieldset>
-
-</body>
-</html>
+        
+        {% endblock %}
 

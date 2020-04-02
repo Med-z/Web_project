@@ -1,8 +1,8 @@
 {% extends "@SiteSite/layout.html.twig" %}
 
 {% block title %}Liste des produits{% endblock %}
-
 {%  block pagetitle %} Liste des produits de notre boutique {% endblock %}
+
 {% block menu %} {% include '@SiteSite/Menu/menu.html.twig' %}{% endblock %}
 {% block testid %}
     {% if identifiant == 1 %}
@@ -51,9 +51,5 @@
 {% endblock %}
 
 
-
-{% block body %}
-    <a href="{{ path('site_site_menu') }}">Menu du Site</a>
-{% endblock %}
 
 
