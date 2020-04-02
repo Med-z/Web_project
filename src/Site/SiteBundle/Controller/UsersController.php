@@ -83,78 +83,9 @@ class UsersController extends Controller
         ));
     }
 
-
+    // on utilise le service SecondInDayCounter
     public function connexionAction(SecondInDayCounter $secCounter)
-    {/*
-        $user = new SignIn();
-        //récuperation formulaire
-        $form = $this->createForm(SignInType::class,$user);
-        if($form->isSubmitted()){
-            //on enregistre le nouvel utilisateur dans la base de données
-            $logform->getLogin();
-            $log = $this->getDoctrine()
-                ->getRepository('@SiteSite/Users')
-                ->find
-            if (!em) {
-                throw $this->createNotFoundException(
-                    'Aucun produit trouvé pour cet id : '.$id
-                );
-            }
-        }
-        // generation html
-        $formView = $form->createView();
-
-        return $this->render('@SiteSite/Users/connexion.html.twig', array(
-            'form' => $formView
-        ));*//*
-        if(isset($_POST['envoyer'])) {
-            if (isset($_POST['log'])){
-                $tmp = $_POST['log'];
-                $em = $this->getDoctrine()->getManager();
-                $login = $em->getRepository('SiteSiteBundle:Users')->findAll();
-                if($tmp == $login){
-                    return new Response('Utilisateur  reconnu');
-                }
-            }
-        }*/
-        /*
-        $user = new SignIn();
-        //récuperation formulaire
-        $form = $this->createForm(SignInType::class,$user);
-
-
-        if( $request->getMethod() == 'POST' ) {
-            //$form->bindRequest($request);
-            $form->handleRequest($request);
-
-            if ($form->isValid() && $form->isSubmitted()) {
-
-                $data = $form->getData();
-                $login = $form["login"]->getData();
-                $password = $form["password"]->getData();
-
-                $log = $this->getDoctrine()
-                    ->getRepository('SiteSiteBundle:Users')
-                    ->findOneBy(['login' => $login]);
-
-                $pwd = $this->getDoctrine()
-                    ->getRepository('SiteSiteBundle:Users')
-                    ->findOneBy(['password' => $password]);
-
-                if(($log == $login) && ($pwd == $password)){
-                    return new Response('utilisateur reconnu');
-                } else {
-                    return new Response('Connexion impossible');
-                }
-
-
-            }
-        }
-        $formView = $form->createView();
-
-        return $this->render('@SiteSite/Users/connexion.html.twig', array(
-            'form' => $formView
-        ));*/
+    {
         $arg = array('secondInDay' => $secCounter->getsecond());
         return $this->render('@SiteSite/Users/connexion.html.twig',$arg);
     }
