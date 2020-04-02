@@ -84,7 +84,7 @@ class UsersController extends Controller
     }
 
 
-    public function connexionAction()
+    public function connexionAction(SecondInDayCounter $secCounter)
     {/*
         $user = new SignIn();
         //récuperation formulaire
@@ -155,7 +155,6 @@ class UsersController extends Controller
         return $this->render('@SiteSite/Users/connexion.html.twig', array(
             'form' => $formView
         ));*/
-        $secCounter = new SecondInDayCounter ();
         $arg = array('secondInDay' => $secCounter->getsecond());
         return $this->render('@SiteSite/Users/connexion.html.twig',$arg);
     }

@@ -14,6 +14,13 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: false
 
+
+    Site\SiteBundle\:
+        resource: '../../src/Site/SiteBundle/*'
+        # you can exclude directories or files
+        # but if a service is unused, it's removed anyway
+        exclude: '../../src/Site/SiteBundle/{Entity,Repository,Tests}'
+
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     AppBundle\:
