@@ -1,0 +1,25 @@
+Liste des fichiers modifiés ou créer
+
+Dans app:
+ Dans conig:
+  -config.yml
+  -parameters.yml
+  -routing.yml
+  -services.yml
+ -Resources/views/base.html.twig
+
+
+Dans Web:
+ Tout le Dossier img:
+  -footer.jpg
+  -top_admin.jpg
+  -top_ath.jpg
+  -top.jpg
+ Tout le Dossier css:
+  -administration.css
+  -connexion.css
+  -deconnexion.css
+  -editprofil.css
+  -inscription.css
+  -main.css
+  -site.css
