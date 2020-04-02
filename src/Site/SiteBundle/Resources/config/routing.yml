@@ -15,7 +15,7 @@ site_site_disconnect:
     defaults: { _controller: SiteSiteBundle:Users:deconnexion }
 
 site_site_profil:
-    path:     /menu/profil/{num}
+    path:    /menu/profil/
     defaults: { _controller: SiteSiteBundle:Users:edit}
 
 site_site_menu:
@@ -29,7 +29,6 @@ site_site_shop:
 site_site_panier:
     path:     /menu/shop/panier
     defaults: { _controller: SiteSiteBundle:Shop:panier}
-
 
 site_site_admin:
     path:     /administration
