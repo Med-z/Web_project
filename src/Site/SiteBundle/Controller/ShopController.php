@@ -26,7 +26,7 @@ class ShopController extends Controller
 
         return new Response('test');
         */
-        $em = $this->getDoctrine()->getRepository('SiteSiteBundle:Product');
+        $em = $this->getDoctrine()->getRepository('SiteSiteBundle:Im1920Product');
         $products = $em->findAll();
 
         if($request->getMethod() == 'POST'){
