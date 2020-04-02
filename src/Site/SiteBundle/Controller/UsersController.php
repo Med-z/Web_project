@@ -19,42 +19,41 @@ class UsersController extends Controller
 {
     public function inscriptionAction(Request $request)
     {
-                //$user = new Users();
-                $user = new Im1920Utilisateurs();
-                //récuperation formulaire
-                $form = $this->createForm(Im1920UtilisateursType::class,$user);
+        $user = new Im1920Utilisateurs();
+        //récuperation formulaire
+        $form = $this->createForm(Im1920UtilisateursType::class,$user);
 
-                //récuperation de la requête
-                $form->handleRequest($request);
+        //récuperation de la requête
+        $form->handleRequest($request);
 
-                //si formulaire soumis
-                if($form->isSubmitted()){
-                    //on enregistre le nouvel utilisateur dans la base de données
+        //si formulaire soumis
+        if($form->isSubmitted()){
+            //on enregistre le nouvel utilisateur dans la base de données
 
-                    $em = $this->getDoctrine()->getManager();
-                    // encodage du mot de passe en sha1
-                    $user->setMotdepasse((sha1($user->getMotdepasse())));
-                    /*
-                    $user->setCreated('H:i:s \O\n d/m/Y');
-                    $user->setModified($user->getCreated());*/
-                    $em->persist($user);
-                    $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            // encodage du mot de passe en sha1
+            $user->setMotdepasse((sha1($user->getMotdepasse())));
+            /*
+            $user->setCreated('H:i:s \O\n d/m/Y');
+            $user->setModified($user->getCreated());*/
+            $em->persist($user);
+            $em->flush();
 
-                    return $this->render('@SiteSite/Menu/menu.html.twig');
+            return $this->render('@SiteSite/Menu/menu.html.twig');
 
-                }
+        }
 
-                // generation html
-                $formView = $form->createView();
+        // generation html
+        $formView = $form->createView();
 
-                return $this->render('@SiteSite/Users/inscription.html.twig', array(
-                    'form' => $formView
-                ));
+        return $this->render('@SiteSite/Users/inscription.html.twig', array(
+            'form' => $formView
+        ));
     }
 
     public function editAction(Request $request)
     {
-       // le profil à editer doit être passer dans l'url
+        // le profil à editer doit être passer dans l'url
         $em = $this->getDoctrine()->getManager()->getRepository('SiteSiteBundle:Im1920Utilisateurs');
         // on récupère la variable globale de l'utilisateur connecté
         $connectglobals = $this->get("twig")->getGlobals();
@@ -83,7 +82,7 @@ class UsersController extends Controller
         ));
     }
 
-    // on utilise le service SecondInDayCounter
+
     public function connexionAction(SecondInDayCounter $secCounter)
     {
         $arg = array('secondInDay' => $secCounter->getsecond());
