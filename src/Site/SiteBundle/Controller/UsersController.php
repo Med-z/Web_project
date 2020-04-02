@@ -51,11 +51,15 @@ class UsersController extends Controller
                 ));
     }
 
-    public function editAction(Request $request, $num)
+    public function editAction(Request $request)
     {
        // le profil à editer doit être passer dans l'url
         $em = $this->getDoctrine()->getManager()->getRepository('SiteSiteBundle:Im1920Utilisateurs');
-        $user = $em->findById($num);
+        // on récupère la variable globale de l'utilisateur connecté
+        $connectglobals = $this->get("twig")->getGlobals();
+        $connect = $connectglobals["connect"];
+        //on trouve les informations de son profil
+        $user = $em->findById($connect);
         if (!$user){
             throw $this->createNotFoundException('No user with the id selected');
         }
