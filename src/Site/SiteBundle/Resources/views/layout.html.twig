@@ -7,13 +7,12 @@
 {% endblock %}
 {% block header %}
     {% if identifiant == 1 %}
-        {% set srcTop = 'top_auth.jpg' %}
+        <img src="{{ asset('img/top_auth.jpg') }}" alt="image de haut de page client"/>
     {% elseif identifiant == 2%}
-        {% set srcTop = 'top_admin.jpg' %}
+        <img src="{{ asset('img/top_admin.png') }}" alt="image de haut de page administateur"/>
     {% else %}
-        {% set srcTop = 'top.jpg' %}
+        <img src="{{ asset('img/top.png') }}" alt="image de haut de page anonyme"/>
     {% endif %}
-    <img src="{{ srcTop }}" alt="image de haut de page"/>
 {% endblock %}  
 {% block body %}
 <h1>{%  block pagetitle %}{% endblock %}</h1>

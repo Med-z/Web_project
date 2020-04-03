@@ -10,11 +10,12 @@ Dans app:
 
 
 Dans Web:
+ favicon.ico
  Tout le Dossier img:
   -footer.jpg
-  -top_admin.jpg
+  -top_admin.pnd
   -top_ath.jpg
-  -top.jpg
+  -top.png
  Tout le Dossier css:
   -administration.css
   -connexion.css
