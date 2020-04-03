@@ -10,6 +10,7 @@ Dans app:
 
 
 Dans Web:
+ app_dev.php
  favicon.ico
  Tout le Dossier img:
   -footer.jpg
