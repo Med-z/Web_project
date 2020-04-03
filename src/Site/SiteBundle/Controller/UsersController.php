@@ -19,35 +19,43 @@ class UsersController extends Controller
 {
     public function inscriptionAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $message = "";
         $user = new Im1920Utilisateurs();
         //récuperation formulaire
         $form = $this->createForm(Im1920UtilisateursType::class,$user);
 
         //récuperation de la requête
         $form->handleRequest($request);
-
+        
         //si formulaire soumis
         if($form->isSubmitted()){
             //on enregistre le nouvel utilisateur dans la base de données
-
-            $em = $this->getDoctrine()->getManager();
-            // encodage du mot de passe en sha1
-            $user->setMotdepasse((sha1($user->getMotdepasse())));
-            /*
-            $user->setCreated('H:i:s \O\n d/m/Y');
-            $user->setModified($user->getCreated());*/
-            $em->persist($user);
-            $em->flush();
-
-            return $this->render('@SiteSite/Menu/menu.html.twig');
-
+            //on vérifie que le nom n'existe pas 
+            $exists = false;
+            foreach($em->getRepository('SiteSiteBundle:Im1920Utilisateurs')->findAll() as $u){
+                if ($u->getIdentifiant() == $user->getIdentifiant()) {
+                    $exists = true;
+                    $message = "Nom d'utilisateur déjà utilisé";
+                }
+            }
+            if (!$exists) {
+                // encodage du mot de passe en sha1
+                $user->setMotdepasse((sha1($user->getMotdepasse())));
+                
+                $em->persist($user);
+                $em->flush();
+    
+                return $this->render('@SiteSite/Menu/menu.html.twig');
+            }
         }
 
         // generation html
         $formView = $form->createView();
 
         return $this->render('@SiteSite/Users/inscription.html.twig', array(
-            'form' => $formView
+            'form' => $formView,
+            'msg' => $message
         ));
     }
 
@@ -74,7 +82,7 @@ class UsersController extends Controller
             // modification de la  date
             $user[0]->setModified(new \DateTime('now'));
             $em->flush();
-            return $this->redirectToRoute('site_site_menu');
+            return $this->redirectToRoute('site_site_homepage');
         }
 
         return $this->render('@SiteSite/Users/editprofil.html.twig', array(
