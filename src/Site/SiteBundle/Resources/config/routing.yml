@@ -18,10 +18,6 @@ site_site_profil:
     path:    /menu/profil/
     defaults: { _controller: SiteSiteBundle:Users:edit}
 
-site_site_menu:
-    path:     /menu/
-    defaults: { _controller: SiteSiteBundle:Menu:accueil}
-
 site_site_shop:
     path:     /menu/shop
     defaults: { _controller: SiteSiteBundle:Shop:commande}
