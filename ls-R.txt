@@ -1,7 +1,7 @@
 Liste des fichiers modifiés ou créer
 
 Dans app:
- Dans conig:
+ Dans config:
   -config.yml
   -parameters.yml
   -routing.yml
